@@ -42,7 +42,7 @@ const Sidebar = () => {
                     placeholder="Search accounts"
                 />
             </div>
-            {/* Cart button */}
+            {/* Profile button */}
             <button className="bg-black text-white hidden sm:flex items-center py-2 rounded-full border border-black px-5 ">
                 <CgProfile size={20} className="mr-2" /> Profile
             </button>
