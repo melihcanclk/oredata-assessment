@@ -22,7 +22,10 @@ import java.math.BigDecimal;
 public class Account extends Audit implements Serializable {
 
     @Column(name = "account_number", nullable = false, unique = true)
-    private String accountNumber;
+    private String number;
+
+    @Column(name = "account_name", nullable = false, unique = true)
+    private String name;
 
     @Column(name = "balance", nullable = false)
     private BigDecimal balance;

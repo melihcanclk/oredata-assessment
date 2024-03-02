@@ -9,4 +9,5 @@ public class CilekBankApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CilekBankApplication.class, args);
 	}
+
 }
