@@ -22,7 +22,7 @@ const Sidebar = () => {
     ];
 
     return (
-        <div className="max-w-[1640px] mx-auto flex justify-between items-center p-4 shadow-sm">
+        <div className="mx-auto flex justify-between items-center p-4 shadow-sm">
             {/* Left side */}
             <div className="flex items-center">
                 <div onClick={toggleNav} className="cursor-pointer">
