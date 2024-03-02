@@ -4,6 +4,7 @@ import { FaWallet } from "react-icons/fa";
 import { MdFavorite, MdHelp } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
 import { CgProfile } from "react-icons/cg";
+import { Link } from "react-router-dom";
 
 
 const Sidebar = () => {
@@ -27,9 +28,9 @@ const Sidebar = () => {
                 <div onClick={toggleNav} className="cursor-pointer">
                     <AiOutlineMenu size={30} />
                 </div>
-                <a href="/" className="pl-4">
+                <Link to={"/"} className="pl-4">
                     <Logo />
-                </a>
+                </Link>
             </div>
 
             {/* Search Input */}
