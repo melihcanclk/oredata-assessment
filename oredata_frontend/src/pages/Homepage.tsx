@@ -1,8 +1,8 @@
-import Sidebar from "../components/Sidebar";
-
 const Homepage = () => {
     return (
-        <Sidebar />
+        <div>
+            sa
+        </div>
     );
 }
 

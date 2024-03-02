@@ -1,6 +1,5 @@
-import { FC, useState } from "react";
+import { useState } from "react";
 import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
-import { BsFillCartFill } from "react-icons/bs";
 import { FaWallet } from "react-icons/fa";
 import { MdFavorite, MdHelp } from "react-icons/md";
 import { TbTruckDelivery } from "react-icons/tb";
@@ -28,10 +27,8 @@ const Sidebar = () => {
                 <div onClick={toggleNav} className="cursor-pointer">
                     <AiOutlineMenu size={30} />
                 </div>
-                <a href="/">
-                    <h1 className="text-2xl sm:text-3xl lg:text-4xl px-2">
-                        Best <span className="font-bold">Eats</span>
-                    </h1>
+                <a href="/" className="pl-4">
+                    <Logo />
                 </a>
             </div>
 
@@ -41,7 +38,7 @@ const Sidebar = () => {
                 <input
                     className="bg-transparent p-2 w-full focus:outline-none"
                     type="text"
-                    placeholder="Search foods"
+                    placeholder="Search accounts"
                 />
             </div>
             {/* Cart button */}
@@ -70,9 +67,9 @@ const Sidebar = () => {
                     size={30}
                     className="absolute right-4 top-4 cursor-pointer"
                 />
-                <h2 className="text-2xl p-4">
-                    Best <span className="font-bold">Eats</span>
-                </h2>
+                <div className="p-4">
+                    <Logo />
+                </div>
                 <nav>
                     <ul className="flex flex-col p-4 text-gray-800">
                         {menuItems.map(({ icon, text }, index) => {
@@ -93,8 +90,19 @@ const Sidebar = () => {
                     </ul>
                 </nav>
             </div>
+                        
         </div>
     );
 };
+
+const Logo = () => (
+    <>
+        <span
+            className="text-red-500 cursor-pointer hover:text-red-600 transition duration-300 ease-in-out text-2xl sm:text-3xl lg:text-4xl"
+        >
+            Cilek
+        </span>{" "} <span className="font-bold text-2xl sm:text-3xl lg:text-4xl">Bank</span>
+    </>
+)
 
 export default Sidebar;
