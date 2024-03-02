@@ -1,4 +1,5 @@
-export interface AuthButtonProps {
-    label: string;
-    loading: boolean;
+export interface ButtonProps {
+    children: React.ReactNode;
+    type: "submit" | "button" | "reset" | undefined;
+    loading?: boolean;
 }

@@ -1,7 +1,7 @@
 import { Button } from "../../components/Button"
-import { AuthButtonProps } from "../../types/AuthButtonProps"
+import { ButtonProps } from "../../types/AuthButtonProps"
 
-const AuthButton = ({ loading, label }: AuthButtonProps) => {
+const AuthButton = ({ loading, children }: ButtonProps) => {
 
     return (
         loading ?
@@ -11,14 +11,16 @@ const AuthButton = ({ loading, label }: AuthButtonProps) => {
                 </span>
                 <Button
                     type="submit"
-                    label="Loading..."
-                />
+                >
+                    Loading..
+                </Button>
             </>
             : (
                 <Button
                     type="submit"
-                    label={label}
-                />
+                >
+                    {children}
+                </Button>
             )
     )
 }
