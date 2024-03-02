@@ -3,11 +3,17 @@ import { AuthLayout } from "./AuthLayout";
 import { AuthInput } from "./AuthInput";
 import { AuthButton } from "./AuthButton";
 import { AuthLoginDTO } from "../../types/AuthLoginDTO";
+import { useStore } from "../../zustand";
+import { IBear } from "../../zustand";
 // import { useHistory } from "react-router-dom";
 
 const Login = () => {
 
-    const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+    const bears = useStore((state: unknown) => (state as IBear).bears);
+    const increasePopulation = useStore((state: unknown) => (state as IBear).increasePopulation);
+    console.log(bears);
+
+    const handleLogin = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const target = e.target as HTMLFormElement;
         const values = {
@@ -16,6 +22,7 @@ const Login = () => {
         } as AuthLoginDTO;
 
         console.log(values.email, values.password);
+        increasePopulation();
     };
 
     return (
@@ -27,7 +34,7 @@ const Login = () => {
                 <form onSubmit={handleLogin} className="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                     <AuthInput
                         label="Email"
-                        id="loginInput"
+                        id="email"
                         type="text"
                         error=""
                     />
