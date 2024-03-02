@@ -1,7 +1,7 @@
 import { FormEvent } from "react";
-import { AuthInput } from "./AuthInput";
-import { AuthLayout } from "./AuthLayout";
-import { AuthButton } from "./AuthButton";
+import { AuthInput } from "../../components/AuthInput";
+import { AuthLayout } from "../../components/AuthLayout";
+import { AuthButton } from "../../components/AuthButton";
 
 const Register = () => {
 

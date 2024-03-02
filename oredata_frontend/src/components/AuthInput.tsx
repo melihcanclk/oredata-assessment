@@ -1,4 +1,4 @@
-import { AuthInputProps } from "../../types/AuthInputProps";
+import { AuthInputProps } from "../types/AuthInputProps";
 
 const AuthInput = ({ label, id, type, value, onChange, error }: AuthInputProps) => {
     return (

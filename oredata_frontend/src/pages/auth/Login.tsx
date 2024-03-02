@@ -1,7 +1,7 @@
 import { FormEvent } from "react";
-import { AuthLayout } from "./AuthLayout";
-import { AuthInput } from "./AuthInput";
-import { AuthButton } from "./AuthButton";
+import { AuthLayout } from "../../components/AuthLayout";
+import { AuthInput } from "../../components/AuthInput";
+import { AuthButton } from "../../components/AuthButton";
 import { AuthLoginDTO } from "../../types/AuthLoginDTO";
 import { useStore } from "../../zustand";
 import { IBear } from "../../zustand";

@@ -6,17 +6,21 @@ import { Register } from "./pages/auth/Register"
 import { Profile } from "./pages/Profile"
 import { Transactions } from "./pages/Transactions"
 import { Layout } from "./components/Layout"
+import { Settings } from "./pages/Settings"
+import { Account } from "./pages/Account"
 
 const routes = createBrowserRouter(
     createRoutesFromElements(
-        <Route path="/" >,
-            <Route element={<Layout />} >,
-                <Route index element={<Homepage />} />,
+        <Route path="/" >
+            <Route element={<Layout />} >
+                <Route index element={<Homepage />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path="transactions" element={<Transactions />} />
-            </Route>,
-            <Route path="login" element={<Login />} />,
-            <Route path="register" element={<Register />} />,
+                <Route path="settings" element={<Settings />} />
+                <Route path="account" element={<Account />} />
+            </Route>
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
             <Route path="*" element={<Error404 />} />
         </Route >
     )

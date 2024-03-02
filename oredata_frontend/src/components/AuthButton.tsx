@@ -1,5 +1,5 @@
-import { Button } from "../../components/Button"
-import { ButtonProps } from "../../types/AuthButtonProps"
+import { Button } from "./Button"
+import { ButtonProps } from "../types/AuthButtonProps"
 
 const AuthButton = ({ loading, children }: ButtonProps) => {
 
