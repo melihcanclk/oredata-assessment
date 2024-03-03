@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -241,7 +242,7 @@ public class AccountService implements IAccountService {
     }
 
     @Override
-    public List<GetAccountResponseDTO> getAccounts(String bearerToken) {
+    public List<GetAccountResponseDTO> getAccounts(String bearerToken, String accountName, String accountNumber) {
 
         UUID userUUID = jwtUtils.getUserIdFromBearerToken(bearerToken);
         if (!userRepository.existsById(userUUID)) {
@@ -249,6 +250,15 @@ public class AccountService implements IAccountService {
         }
 
         List<Account> accounts = accountRepository.findAllByUserUserId(userUUID);
+
+        // includes account name and number in list
+        if (accountName != null) {
+            accounts = accounts.stream().filter(account -> account.getName().contains(accountName)).toList();
+        }
+
+        if (accountNumber != null) {
+            accounts = accounts.stream().filter(account -> account.getNumber().contains(accountNumber)).toList();
+        }
 
         List<GetAccountResponseDTO> accountResponseDTOS = new ArrayList<>();
         for (Account account : accounts) {

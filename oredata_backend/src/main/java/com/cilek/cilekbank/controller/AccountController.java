@@ -52,8 +52,11 @@ public class AccountController {
     // get all accounts of a user
     @PostMapping
     public ResponseEntity<List<GetAccountResponseDTO>> getAccounts(
-            @RequestHeader(value = "Authorization") String bearerToken
+            @RequestHeader(value = "Authorization") String bearerToken,
+            @RequestParam(value = "accountName", required = false) String accountName,
+            @RequestParam(value = "accountNumber", required = false) String accountNumber
+
     ){
-        return ResponseEntity.ok(accountService.getAccounts(bearerToken));
+        return ResponseEntity.ok(accountService.getAccounts(bearerToken, accountName, accountNumber));
     }
 }
