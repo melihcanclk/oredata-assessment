@@ -21,7 +21,7 @@ public class _User extends Audit implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id", updatable = false, nullable = false)
-    private UUID user_id;
+    private UUID userId;
 
     @Column(name = "username", nullable = false, unique = true)
     private String username;

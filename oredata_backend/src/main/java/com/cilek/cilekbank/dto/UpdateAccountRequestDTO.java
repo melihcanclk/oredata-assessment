@@ -6,5 +6,4 @@ import lombok.Data;
 public class UpdateAccountRequestDTO {
     private String accountNumber;
     private String accountName;
-    private String userId;
 }

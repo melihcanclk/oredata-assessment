@@ -5,7 +5,7 @@ import com.cilek.cilekbank.model.Token;
 import com.cilek.cilekbank.model._User;
 import com.cilek.cilekbank.repository.TokenRepository;
 import com.cilek.cilekbank.repository.UserRepository;
-import com.cilek.cilekbank.service.JWTUtils;
+import com.cilek.cilekbank.utils.JWTUtils;
 import com.cilek.cilekbank.service.abstracts.IAuthService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.function.Function;
 
 @Service
 @AllArgsConstructor
@@ -67,7 +66,7 @@ public class AuthService implements IAuthService {
 
             registerResponseDTO.setUsername(user.getUsername());
             registerResponseDTO.setEmail(user.getEmail());
-            registerResponseDTO.setUserId(user.getUser_id());
+            registerResponseDTO.setUserId(user.getUserId());
             registerResponseDTO.setResponseStatus(new ResponseStatus(
                     200,
                     "User registered successfully",
@@ -99,13 +98,11 @@ public class AuthService implements IAuthService {
             _User user = userRepository.findByUsername(loginRequestDTO.getUsername()).orElseThrow(() -> new RuntimeException("User not found"));
             System.out.println("User found: " + user.getUsername());
 
-            Token accessToken = setToken(user, token ->
-                    jwtUtils.generateAccessToken(new HashMap<>(), user)
-            );
+            Token accessToken = setToken(user);
 
             loginResponseDTO.setUsername(user.getUsername());
             loginResponseDTO.setEmail(user.getEmail());
-            loginResponseDTO.setUserId(user.getUser_id());
+            loginResponseDTO.setUserId(user.getUserId());
             loginResponseDTO.setResponseStatus(new ResponseStatus(
                     200,
                     "Login successful",
@@ -127,20 +124,20 @@ public class AuthService implements IAuthService {
         return loginResponseDTO;
     }
 
-    private Token setToken(_User user, Function<_User, String> tokenGenerationFunction) {
-        Token token = new Token();
-
-        // Apply the provided token generation function
-        String generatedToken = tokenGenerationFunction.apply(user);
+    private Token setToken(_User user) {
+        HashMap<String, Object> customClaims = new HashMap<>();
+        customClaims.put("userId", user.getUserId());
+        String generatedToken = jwtUtils.generateAccessToken(customClaims, user);
+        Token accessToken = new Token();
 
         // Set the generated token to the Token object
-        token.setAccessToken(generatedToken);
+        accessToken.setAccessToken(generatedToken);
 
         System.out.println("Token generated: " + generatedToken);
 
-        token.setExpirationTime(LocalDateTime.now().plusHours(24));
-        token.setLoggedOut(false);
-        token.setUser(user);
+        accessToken.setExpirationTime(LocalDateTime.now().plusHours(24));
+        accessToken.setLoggedOut(false);
+        accessToken.setUser(user);
 
         // if user has tokens, make them logged out
         if (user.getTokens() != null) {
@@ -150,8 +147,8 @@ public class AuthService implements IAuthService {
             });
         }
 
-        tokenRepository.save(token);
-        return token;
+        tokenRepository.save(accessToken);
+        return accessToken;
     }
 
 }

@@ -1,20 +1,19 @@
 package com.cilek.cilekbank.service.abstracts;
 
 import com.cilek.cilekbank.dto.*;
-import com.cilek.cilekbank.model.Account;
 
 import java.util.List;
 
 public interface IAccountService {
 
-    CreateAccountResponseDTO createAccount(CreateAccountRequestDTO createAccountRequestDTO);
+    CreateAccountResponseDTO createAccount(CreateAccountRequestDTO createAccountRequestDTO, String bearerToken);
 
-    Account getAccount(String accountNumber);
+    GetAccountResponseDTO getAccount(String accountNumber, String bearerToken);
 
-    UpdateAccountResponseDTO updateAccount(String id, UpdateAccountRequestDTO updateAccountRequestDTO);
+    UpdateAccountResponseDTO updateAccount(String id, UpdateAccountRequestDTO updateAccountRequestDTO, String bearerToken);
 
-    ResponseStatus deleteAccount(String id);
+    ResponseStatus deleteAccount(String id, String bearerToken);
 
-    List<Account> getAccounts(String accountNumber, String accountName);
+    List<GetAccountResponseDTO> getAccounts(String bearerToken);
 
 }

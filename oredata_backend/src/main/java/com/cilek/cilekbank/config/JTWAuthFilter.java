@@ -1,6 +1,6 @@
 package com.cilek.cilekbank.config;
 
-import com.cilek.cilekbank.service.JWTUtils;
+import com.cilek.cilekbank.utils.JWTUtils;
 import com.cilek.cilekbank.service.abstracts.IUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

@@ -1,4 +1,4 @@
-package com.cilek.cilekbank.service;
+package com.cilek.cilekbank.utils;
 
 import com.cilek.cilekbank.repository.TokenRepository;
 import io.jsonwebtoken.Claims;
@@ -13,6 +13,7 @@ import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.HashMap;
+import java.util.UUID;
 import java.util.function.Function;
 
 @Configuration
@@ -45,6 +46,13 @@ public class JWTUtils {
 
     public String getUsernameFromToken(String token) {
         return getAllClaimsFromToken(token, Claims::getSubject);
+    }
+
+    public UUID getUserIdFromBearerToken(String token) {
+        // get user id from bearer token
+        String bearerToken = token.substring(7);
+        String userId = getAllClaimsFromToken(bearerToken, claims -> claims.get("userId", String.class));
+        return UUID.fromString(userId);
     }
 
     private <T> T getAllClaimsFromToken(String token, Function<Claims, T> claimsResolver) {
