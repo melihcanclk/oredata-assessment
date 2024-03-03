@@ -38,28 +38,33 @@ public class SecurityConfig {
                         authorizeRequests.requestMatchers(
                                         HttpMethod.GET,
                                         "/api/user/**",
-                                        "/api/account/**",
+                                        "/api/accounts/**",
                                         "/api/transaction/**"
                                 ).authenticated()
                                 .requestMatchers(
                                         HttpMethod.POST,
                                         "/api/user/**",
-                                        "/api/account/**",
+                                        "/api/accounts/**",
                                         "/api/transaction/**"
                                 ).authenticated()
                                 .requestMatchers(
                                         HttpMethod.PUT,
                                         "/api/user/**",
-                                        "/api/account/**",
+                                        "/api/accounts/**",
                                         "/api/transaction/**"
                                 ).authenticated()
                                 .requestMatchers(
                                         HttpMethod.DELETE,
                                         "/api/user/**",
-                                        "/api/account/**",
+                                        "/api/accounts/**",
                                         "/api/transaction/**"
                                 ).authenticated()
-                                .anyRequest().permitAll()
+                                .requestMatchers(
+                                        "/api/users/register",
+                                        "/api/users/login",
+                                        "/swagger-ui/**",
+                                        "/v3/api-docs/**"
+                                ).permitAll()
                 ).sessionManagement(sessionManagement ->
                         sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())

@@ -67,6 +67,7 @@ public class AuthService implements IAuthService {
 
             registerResponseDTO.setUsername(user.getUsername());
             registerResponseDTO.setEmail(user.getEmail());
+            registerResponseDTO.setUserId(user.getUser_id());
             registerResponseDTO.setResponseStatus(new ResponseStatus(
                     200,
                     "User registered successfully",
@@ -104,6 +105,7 @@ public class AuthService implements IAuthService {
 
             loginResponseDTO.setUsername(user.getUsername());
             loginResponseDTO.setEmail(user.getEmail());
+            loginResponseDTO.setUserId(user.getUser_id());
             loginResponseDTO.setResponseStatus(new ResponseStatus(
                     200,
                     "Login successful",

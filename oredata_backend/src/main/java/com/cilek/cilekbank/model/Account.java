@@ -1,10 +1,6 @@
 package com.cilek.cilekbank.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -20,6 +17,11 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Data
 public class Account extends Audit implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "account_id", updatable = false, nullable = false)
+    private UUID account_id;
 
     @Column(name = "account_number", nullable = false, unique = true)
     private String number;

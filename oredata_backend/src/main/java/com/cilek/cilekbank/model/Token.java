@@ -14,6 +14,12 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Token {
 
+    public Token(String token, LocalDateTime expirationTime) {
+        this.accessToken = token;
+        this.expirationTime = expirationTime;
+        this.isLoggedOut = false;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

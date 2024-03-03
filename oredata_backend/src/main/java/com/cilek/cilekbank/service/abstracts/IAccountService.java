@@ -1,7 +1,6 @@
 package com.cilek.cilekbank.service.abstracts;
 
-import com.cilek.cilekbank.dto.CreateAccountRequestDTO;
-import com.cilek.cilekbank.dto.CreateAccountResponseDTO;
+import com.cilek.cilekbank.dto.*;
 import com.cilek.cilekbank.model.Account;
 
 import java.util.List;
@@ -12,9 +11,9 @@ public interface IAccountService {
 
     Account getAccount(String accountNumber);
 
-    Account updateAccount(String accountNumber, String accountName);
+    UpdateAccountResponseDTO updateAccount(String id, UpdateAccountRequestDTO updateAccountRequestDTO);
 
-    void deleteAccount(String accountNumber);
+    ResponseStatus deleteAccount(String id);
 
     List<Account> getAccounts(String accountNumber, String accountName);
 

@@ -1,15 +1,13 @@
 package com.cilek.cilekbank.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity(name = "cilek_user")
@@ -19,6 +17,11 @@ import java.util.List;
 @Builder
 @Data
 public class _User extends Audit implements UserDetails {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id", updatable = false, nullable = false)
+    private UUID user_id;
 
     @Column(name = "username", nullable = false, unique = true)
     private String username;

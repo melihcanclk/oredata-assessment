@@ -38,7 +38,7 @@ public class JWTUtils {
                 .claims(claims)
                 .subject(userDetails.getUsername())
                 .issuedAt(new java.util.Date(System.currentTimeMillis()))
-                .expiration(new java.util.Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY))
+                .expiration(new java.util.Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
                 .signWith(secretKey, SignatureAlgorithm.HS256)
                 .compact();
     }

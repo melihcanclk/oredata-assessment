@@ -11,11 +11,11 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CreateAccountResponseDTO {
 
-    private UUID id;
+    private UUID accountId;
+    private UUID userId;
     private String accountNumber;
     private String accountName;
     private BigDecimal balance;
-    private UUID userId;
     private String username;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
