@@ -249,16 +249,7 @@ public class AccountService implements IAccountService {
             throw new RuntimeException("User does not exist: " + userUUID);
         }
 
-        List<Account> accounts = accountRepository.findAllByUserUserId(userUUID);
-
-        // includes account name and number in list
-        if (accountName != null) {
-            accounts = accounts.stream().filter(account -> account.getName().contains(accountName)).toList();
-        }
-
-        if (accountNumber != null) {
-            accounts = accounts.stream().filter(account -> account.getNumber().contains(accountNumber)).toList();
-        }
+        List<Account> accounts = accountRepository.findAllByUserUserIdAndNameContainingAndNumberContaining(userUUID, accountName, accountNumber);
 
         List<GetAccountResponseDTO> accountResponseDTOS = new ArrayList<>();
         for (Account account : accounts) {
