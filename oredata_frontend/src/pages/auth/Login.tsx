@@ -19,9 +19,10 @@ const Login = () => {
         const values = {
             email: target.email.value,
             password: target.password.value,
+            confirmPassword: target.confirmPassword.value
         } as AuthLoginDTO;
 
-        console.log(values.email, values.password);
+        console.log(values.email, values.password, values.confirmPassword);
         increasePopulation();
     };
 
@@ -41,6 +42,12 @@ const Login = () => {
                     <AuthInput
                         label="Password"
                         id="password"
+                        type="password"
+                        error=""
+                    />
+                    <AuthInput
+                        label="Confirm Password"
+                        id="confirmPassword"
                         type="password"
                         error=""
                     />
