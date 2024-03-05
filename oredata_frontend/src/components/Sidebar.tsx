@@ -1,11 +1,8 @@
 import { useState } from "react";
-import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
-import { FaWallet } from "react-icons/fa";
-import { MdFavorite, MdHelp } from "react-icons/md";
-import { TbTruckDelivery } from "react-icons/tb";
+import { AiOutlineClose, AiOutlineMenu, AiOutlineSearch, AiOutlineTransaction } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { Link } from "react-router-dom";
-
+import { menuItems } from "../data/menuItems";
 
 const Sidebar = () => {
     const [nav, setNav] = useState(false);
@@ -14,13 +11,6 @@ const Sidebar = () => {
         setNav(!nav);
     }
 
-    const menuItems = [
-        { icon: <TbTruckDelivery size={25} className="mr-4" />, text: "Orders" },
-        { icon: <MdFavorite size={25} className="mr-4" />, text: "Favorites" },
-        { icon: <FaWallet size={25} className="mr-4" />, text: "Wallet" },
-        { icon: <MdHelp size={25} className="mr-4" />, text: "Help" },
-    ];
-
     return (
         <div className="mx-auto flex justify-between items-center p-4 shadow-sm">
             {/* Left side */}
@@ -28,9 +18,7 @@ const Sidebar = () => {
                 <div onClick={toggleNav} className="cursor-pointer">
                     <AiOutlineMenu size={30} />
                 </div>
-                <Link to={"/"} className="pl-4">
-                    <Logo />
-                </Link>
+                <Logo />
             </div>
 
             {/* Search Input */}
@@ -73,11 +61,13 @@ const Sidebar = () => {
                 </div>
                 <nav>
                     <ul className="flex flex-col p-4 text-gray-800">
-                        {menuItems.map(({ icon, text }, index) => {
+                        {menuItems.map(({ icon, text, href }, index) => {
                             return (
-                                <div key={index} className=" py-4">
-                                    <li className="text-xl flex cursor-pointer w-[50%] rounded-full mx-auto p-2 hover:text-white hover:bg-black">
+                                <div key={index} className="py-4">
+                                    <li className="text-xl flex cursor-pointer w-[60%] rounded-full mx-auto p-2 hover:text-white hover:bg-black">
+                                        <Link to={href} className="flex items-center">
                                         {icon} {text}
+                                        </Link>
                                     </li>
                                 </div>
                             );
@@ -97,13 +87,14 @@ const Sidebar = () => {
 };
 
 const Logo = () => (
-    <>
+    <Link to={"/"} className="pl-4">
         <span
             className="text-red-500 cursor-pointer hover:text-red-600 transition duration-300 ease-in-out text-2xl sm:text-3xl lg:text-4xl"
         >
             Cilek
         </span>{" "} <span className="font-bold text-2xl sm:text-3xl lg:text-4xl">Bank</span>
-    </>
+    </Link>
+    
 )
 
 export default Sidebar;

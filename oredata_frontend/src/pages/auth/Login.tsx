@@ -5,11 +5,13 @@ import { AuthButton } from "../../components/AuthButton";
 import { AuthLoginDTO } from "../../types/AuthLoginDTO";
 import { useStore } from "../../zustand";
 import { IBear } from "../../zustand";
+import { useAccessToken } from "../../hooks/useSaveAccessToken";
 // import { useHistory } from "react-router-dom";
 
 const Login = () => {
 
     const bears = useStore((state: unknown) => (state as IBear).bears);
+    const { saveAccessToken } = useAccessToken();
     const increasePopulation = useStore((state: unknown) => (state as IBear).increasePopulation);
     console.log(bears);
 
