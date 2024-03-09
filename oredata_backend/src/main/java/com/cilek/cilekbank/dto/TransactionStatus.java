@@ -7,6 +7,7 @@ public interface TransactionStatus {
     String INVALID_AMOUNT = "INVALID_AMOUNT";
     String INVALID_TRANSACTION = "INVALID_TRANSACTION";
 
+    String UNAUTHORIZED = "UNAUTHORIZED";
     String UNEXPECTED_ERROR = "UNEXPECTED_ERROR";
 
 }

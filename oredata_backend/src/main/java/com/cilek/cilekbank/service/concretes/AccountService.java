@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -58,7 +57,8 @@ public class AccountService implements IAccountService {
             accountRepository.save(account);
 
         } catch (RuntimeException e) {
-            return new CreateAccountResponseDTO(null,
+            return new CreateAccountResponseDTO(
+                    null,
                     null,
                     null,
                     null,

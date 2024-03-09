@@ -39,7 +39,8 @@ public class SecurityConfig {
                                         HttpMethod.GET,
                                         "/api/user/**",
                                         "/api/accounts/**",
-                                        "/api/transactions/**"
+                                        "/api/transactions/**",
+                                        "/api/transactions/account/**"
                                 ).authenticated()
                                 .requestMatchers(
                                         HttpMethod.POST,

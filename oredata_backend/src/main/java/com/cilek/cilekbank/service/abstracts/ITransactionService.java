@@ -11,6 +11,6 @@ public interface ITransactionService {
 
     TransactionTransferResponseDTO transfer(String bearerToken, TransactionTransferRequestDTO transactionTransferRequestDTO);
 
-    List<TransactionTransferResponseDTO> getTransactions(String bearerToken, String fromAccountNumber, String toAccountNumber);
+    List<TransactionTransferResponseDTO> getTransactionsOfAccount(String bearerToken, String accountUUID);
 
 }

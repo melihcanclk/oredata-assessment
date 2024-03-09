@@ -1,6 +1,5 @@
 package com.cilek.cilekbank.model;
 
-import com.cilek.cilekbank.dto.TransactionStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Entity(name = "transaction")
 @Data
@@ -25,7 +23,7 @@ public class Transaction {
     private String fromAccountId;
 
     @JoinColumn(name = "to_account_id", nullable = false)
-    private String toAccount;
+    private String toAccountId;
 
     @Column(name = "amount", nullable = false)
     private BigDecimal amount;

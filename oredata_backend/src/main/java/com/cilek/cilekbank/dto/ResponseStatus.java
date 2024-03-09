@@ -10,7 +10,6 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @AllArgsConstructor
 public class ResponseStatus {
-
     private int statusCode;
     private String message;
     private String error;

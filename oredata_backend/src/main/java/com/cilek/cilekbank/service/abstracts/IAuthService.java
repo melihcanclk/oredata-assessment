@@ -6,4 +6,5 @@ public interface IAuthService {
     RegisterResponseDTO register(RegisterRequestDTO registerRequestDTO);
 
     LoginResponseDTO login(LoginRequestDTO loginRequestDTO);
+
 }
