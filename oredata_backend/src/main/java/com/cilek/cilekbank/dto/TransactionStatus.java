@@ -1,6 +1,12 @@
 package com.cilek.cilekbank.dto;
 
-public enum TransactionStatus {
-    SUCCESS,
-    FAILURE
+public interface TransactionStatus {
+    String SUCCESS = "SUCCESS";
+    String INSUFFICIENT_BALANCE = "INSUFFICIENT_BALANCE";
+    String INVALID_ACCOUNT = "INVALID_ACCOUNT";
+    String INVALID_AMOUNT = "INVALID_AMOUNT";
+    String INVALID_TRANSACTION = "INVALID_TRANSACTION";
+
+    String UNEXPECTED_ERROR = "UNEXPECTED_ERROR";
+
 }

@@ -6,7 +6,9 @@ public interface IAccountService {
 
     CreateAccountResponseDTO createAccount(CreateAccountRequestDTO createAccountRequestDTO, String bearerToken);
 
-    GetAccountResponseDTO getAccount(String accountNumber, String bearerToken);
+    GetAccountResponseDTO getAccountByUUIDString(String accountUUIDString, String bearerToken);
+
+    GetAccountResponseDTO getAccountByAccountNumber(String accountNumber, String bearerToken);
 
     UpdateAccountResponseDTO updateAccount(String id, UpdateAccountRequestDTO updateAccountRequestDTO, String bearerToken);
 

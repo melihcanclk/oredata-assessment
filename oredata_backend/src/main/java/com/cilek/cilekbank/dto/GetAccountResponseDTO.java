@@ -6,13 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GetAccountResponseDTO {
-    private String accountUUID;
+    private UUID accountUUID;
     private String accountNumber;
     private String accountName;
     private String userUUID;

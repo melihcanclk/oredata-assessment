@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity(name = "transaction")
 @Data
@@ -21,10 +22,10 @@ public class Transaction {
     private Long id;
 
     @JoinColumn(name = "from_account_id", nullable = false)
-    private Account fromAccount;
+    private String fromAccountId;
 
     @JoinColumn(name = "to_account_id", nullable = false)
-    private Account toAccount;
+    private String toAccount;
 
     @Column(name = "amount", nullable = false)
     private BigDecimal amount;
@@ -32,7 +33,9 @@ public class Transaction {
     @Column(name = "transaction_date", nullable = false)
     private LocalDateTime transactionDate;
 
-    @Enumerated(EnumType.STRING)
+    @Column(name = "description", nullable = false)
+    private String description;
+
     @Column(name = "status", nullable = false)
-    private TransactionStatus status;
+    private String status;
 }

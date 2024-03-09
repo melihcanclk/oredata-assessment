@@ -26,11 +26,11 @@ public class AccountController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GetAccountResponseDTO> getAccount(
+    public ResponseEntity<GetAccountResponseDTO> getAccountByUUID(
             @RequestHeader(value = "Authorization") String bearerToken,
-            @PathVariable(value = "id") String id
+            @PathVariable(value = "id") String accountUUIDString
     ) {
-        return ResponseEntity.ok(accountService.getAccount(id, bearerToken));
+        return ResponseEntity.ok(accountService.getAccountByUUIDString(accountUUIDString, bearerToken));
     }
 
     @PutMapping("/{id}")
