@@ -18,12 +18,22 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity<RegisterResponseDTO> register(@RequestBody RegisterRequestDTO registerRequestDTO) {
-        return ResponseEntity.ok(authService.register(registerRequestDTO));
+        RegisterResponseDTO registerResponseDTO = authService.register(registerRequestDTO);
+        if (registerResponseDTO.getResponseStatus().getError() != null) {
+            return ResponseEntity.badRequest().body(registerResponseDTO);
+        } else {
+            return ResponseEntity.ok(registerResponseDTO);
+        }
     }
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO loginRequestDTO) {
-        return ResponseEntity.ok(authService.login(loginRequestDTO));
+        LoginResponseDTO loginResponseDTO = authService.login(loginRequestDTO);
+        if (loginResponseDTO.getResponseStatus().getError() != null) {
+            return ResponseEntity.badRequest().body(loginResponseDTO);
+        } else {
+            return ResponseEntity.ok(loginResponseDTO);
+        }
     }
 
 }

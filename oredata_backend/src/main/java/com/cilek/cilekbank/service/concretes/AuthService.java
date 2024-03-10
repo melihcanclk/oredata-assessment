@@ -39,8 +39,8 @@ public class AuthService implements IAuthService {
             if (userRepository.findByUsername(registerRequestDTO.getUsername()).isPresent()) {
                 registerResponseDTO.setResponseStatus(new ResponseStatus(
                         400,
-                        "Username already exists",
                         null,
+                        "Username already exists",
                         null,
                         null
                 ));
@@ -50,8 +50,8 @@ public class AuthService implements IAuthService {
             if (userRepository.findByEmail(registerRequestDTO.getEmail()).isPresent()) {
                 registerResponseDTO.setResponseStatus(new ResponseStatus(
                         400,
-                        "Email already exists",
                         null,
+                        "Email already exists",
                         null,
                         null
                 ));
