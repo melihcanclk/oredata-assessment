@@ -13,5 +13,5 @@ public class UpdateAccountResponseDTO {
     private String accountNumber;
     private String accountName;
     private String userId;
-    private ResponseStatus responseStatus;
+    private ResponseStatus status;
 }

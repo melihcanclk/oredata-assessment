@@ -20,6 +20,6 @@ public class GetAccountResponseDTO {
     private BigDecimal balance;
     private String createdAt;
     private String updatedAt;
-    private ResponseStatus responseStatus;
+    private ResponseStatus status;
 
 }

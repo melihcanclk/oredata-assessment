@@ -17,12 +17,18 @@ public class AccountController {
 
     private final IAccountService accountService;
 
+    // TODO: reconstruct method such that it returns not only ok but also error response
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<CreateAccountResponseDTO> createAccount(
             @RequestHeader(value = "Authorization") String bearerToken,
             @RequestBody CreateAccountRequestDTO createAccountRequestDTO
     ) {
-        return ResponseEntity.ok(accountService.createAccount(createAccountRequestDTO, bearerToken));
+        CreateAccountResponseDTO createAccountResponseDTO = accountService.createAccount(createAccountRequestDTO, bearerToken);
+        if (createAccountResponseDTO.getStatus().getError() != null) {
+            return ResponseEntity.badRequest().body(createAccountResponseDTO);
+        } else {
+            return ResponseEntity.ok(createAccountResponseDTO);
+        }
     }
 
     @GetMapping("/{id}")
@@ -30,7 +36,12 @@ public class AccountController {
             @RequestHeader(value = "Authorization") String bearerToken,
             @PathVariable(value = "id") String accountUUIDString
     ) {
-        return ResponseEntity.ok(accountService.getAccountByUUIDString(accountUUIDString, bearerToken));
+        GetAccountResponseDTO getAccountResponseDTO = accountService.getAccountByUUIDString(accountUUIDString, bearerToken);
+        if (getAccountResponseDTO.getStatus().getError() != null) {
+            return ResponseEntity.badRequest().body(getAccountResponseDTO);
+        } else {
+            return ResponseEntity.ok(getAccountResponseDTO);
+        }
     }
 
     @PutMapping("/{id}")
@@ -39,14 +50,24 @@ public class AccountController {
             @PathVariable(value = "id") String id,
             @RequestBody UpdateAccountRequestDTO updateAccountRequestDTO
     ) {
-        return ResponseEntity.ok(accountService.updateAccount(id, updateAccountRequestDTO, bearerToken));
+        UpdateAccountResponseDTO updateAccountResponseDTO = accountService.updateAccount(id, updateAccountRequestDTO, bearerToken);
+        if (updateAccountResponseDTO.getStatus().getError() != null) {
+            return ResponseEntity.badRequest().body(updateAccountResponseDTO);
+        } else {
+            return ResponseEntity.ok(updateAccountResponseDTO);
+        }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<ResponseStatus> deleteAccount(
             @RequestHeader(value = "Authorization") String bearerToken,
             @PathVariable(value = "id") String id) {
-        return ResponseEntity.ok(accountService.deleteAccount(id, bearerToken));
+        ResponseStatus responseStatus = accountService.deleteAccount(id, bearerToken);
+        if (responseStatus.getError() != null) {
+            return ResponseEntity.badRequest().body(responseStatus);
+        } else {
+            return ResponseEntity.ok(responseStatus);
+        }
     }
 
     // get all accounts of a user
@@ -56,7 +77,12 @@ public class AccountController {
             @RequestParam(value = "accountName", required = false) String accountName,
             @RequestParam(value = "accountNumber", required = false) String accountNumber
 
-    ){
-        return ResponseEntity.ok(accountService.getAccounts(bearerToken, accountName, accountNumber));
+    ) {
+        List<GetAccountResponseDTO> getAccountResponseDTOList = accountService.getAccounts(bearerToken, accountName, accountNumber);
+        if (getAccountResponseDTOList.get(0).getStatus().getError() != null) {
+            return ResponseEntity.badRequest().body(getAccountResponseDTOList);
+        } else {
+            return ResponseEntity.ok(getAccountResponseDTOList);
+        }
     }
 }

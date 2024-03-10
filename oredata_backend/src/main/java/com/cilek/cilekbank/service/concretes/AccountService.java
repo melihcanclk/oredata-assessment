@@ -224,7 +224,7 @@ public class AccountService implements IAccountService {
             account.setUser(user);
             account.setNumber(updateAccountRequestDTO.getAccountNumber());
             account.setName(updateAccountRequestDTO.getAccountName());
-            if(updateAccountRequestDTO.getBalance() != null) {
+            if (updateAccountRequestDTO.getBalance() != null) {
                 account.setBalance(updateAccountRequestDTO.getBalance());
             } else {
                 account.setBalance(account.getBalance());
@@ -255,7 +255,7 @@ public class AccountService implements IAccountService {
                 new ResponseStatus(
                         200,
                         "Account updated",
-                        "Account updated successfully",
+                        null,
                         null,
                         null
                 )
@@ -295,8 +295,8 @@ public class AccountService implements IAccountService {
         }
         return new ResponseStatus(
                 200,
-                "Account deleted",
                 "Account deleted successfully",
+                null,
                 null,
                 null
         );
@@ -322,7 +322,7 @@ public class AccountService implements IAccountService {
                     new ResponseStatus(
                             200,
                             "Account retrieved",
-                            "Account retrieved successfully",
+                            null,
                             null,
                             null
                     )
@@ -339,7 +339,7 @@ public class AccountService implements IAccountService {
                     new ResponseStatus(
                             200,
                             "Account retrieved",
-                            "Account retrieved successfully",
+                            null,
                             null,
                             null
                     )
@@ -357,7 +357,7 @@ public class AccountService implements IAccountService {
                     new ResponseStatus(
                             200,
                             "Account retrieved",
-                            "Account retrieved successfully",
+                            null,
                             null,
                             null
                     )
@@ -374,12 +374,11 @@ public class AccountService implements IAccountService {
                     new ResponseStatus(
                             200,
                             "Account retrieved",
-                            "Account retrieved successfully",
+                            null,
                             null,
                             null
                     )
             )).collect(Collectors.toList());
-
         }
     }
 }
